@@ -286,20 +286,11 @@
   }
 
   .gallery-visual {
+    display: block;
+    width: 100%;
     height: 160px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.4rem;
-    color: var(--white);
+    object-fit: cover;
   }
-
-  .gallery-visual.g1 { background: linear-gradient(145deg, var(--sage), var(--sage-dark)); }
-  .gallery-visual.g2 { background: linear-gradient(145deg, #d9a487, var(--terracotta)); }
-  .gallery-visual.g3 { background: linear-gradient(145deg, #cbb98d, #a68f5c); }
-  .gallery-visual.g4 { background: linear-gradient(145deg, var(--sage-dark), #46543f); }
-  .gallery-visual.g5 { background: linear-gradient(145deg, var(--terracotta), #8f4f36); }
-  .gallery-visual.g6 { background: linear-gradient(145deg, #b9c2b2, var(--sage)); }
 
   .gallery-caption {
     padding: 12px 14px;
@@ -678,27 +669,27 @@
     </p>
     <div class="gallery-grid">
       <div class="gallery-tile">
-        <div class="gallery-visual g1" aria-hidden="true">🧘‍♀️</div>
+        <img class="gallery-visual" src="assets/gallery/reformer-room.jpg" alt="Reformer room with six reformers" loading="lazy" width="897" height="592">
         <div class="gallery-caption i18n" data-en="Reformer Room" data-ar="صالة الريفورمر">Reformer Room</div>
       </div>
       <div class="gallery-tile">
-        <div class="gallery-visual g2" aria-hidden="true">🌿</div>
+        <img class="gallery-visual" src="assets/gallery/reception-lounge.jpg" alt="Studio reception and lounge area" loading="lazy" width="864" height="570">
         <div class="gallery-caption i18n" data-en="Reception & Lounge" data-ar="الاستقبال والصالة">Reception & Lounge</div>
       </div>
       <div class="gallery-tile">
-        <div class="gallery-visual g3" aria-hidden="true">🤝</div>
+        <img class="gallery-visual" src="assets/gallery/small-group-class.jpg" alt="Small group reformer class" loading="lazy" width="858" height="590">
         <div class="gallery-caption i18n" data-en="Small Group Class" data-ar="حصة جماعية صغيرة">Small Group Class</div>
       </div>
       <div class="gallery-tile">
-        <div class="gallery-visual g4" aria-hidden="true">🕯️</div>
+        <img class="gallery-visual" src="assets/gallery/studio-details.jpg" alt="Studio details, candle and towels" loading="lazy" width="872" height="586">
         <div class="gallery-caption i18n" data-en="Studio Details" data-ar="تفاصيل الاستوديو">Studio Details</div>
       </div>
       <div class="gallery-tile">
-        <div class="gallery-visual g5" aria-hidden="true">🚪</div>
+        <img class="gallery-visual" src="assets/gallery/studio-entrance.jpg" alt="Studio entrance door" loading="lazy" width="871" height="572">
         <div class="gallery-caption i18n" data-en="Studio Entrance" data-ar="مدخل الاستوديو">Studio Entrance</div>
       </div>
       <div class="gallery-tile">
-        <div class="gallery-visual g6" aria-hidden="true">🪞</div>
+        <img class="gallery-visual" src="assets/gallery/reformer-closeup.jpg" alt="Close-up of a reformer machine" loading="lazy" width="879" height="588">
         <div class="gallery-caption i18n" data-en="Reformer Close-Up" data-ar="لقطة مقربة للريفورمر">Reformer Close-Up</div>
       </div>
     </div>
