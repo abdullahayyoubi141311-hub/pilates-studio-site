@@ -271,6 +271,44 @@
     flex-shrink: 0;
   }
 
+  /* ---------- Gallery ---------- */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .gallery-tile {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    background: var(--white);
+  }
+
+  .gallery-visual {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.4rem;
+    color: var(--white);
+  }
+
+  .gallery-visual.g1 { background: linear-gradient(145deg, var(--sage), var(--sage-dark)); }
+  .gallery-visual.g2 { background: linear-gradient(145deg, #d9a487, var(--terracotta)); }
+  .gallery-visual.g3 { background: linear-gradient(145deg, #cbb98d, #a68f5c); }
+  .gallery-visual.g4 { background: linear-gradient(145deg, var(--sage-dark), #46543f); }
+  .gallery-visual.g5 { background: linear-gradient(145deg, var(--terracotta), #8f4f36); }
+  .gallery-visual.g6 { background: linear-gradient(145deg, #b9c2b2, var(--sage)); }
+
+  .gallery-caption {
+    padding: 12px 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    text-align: center;
+  }
+
   /* ---------- Schedule ---------- */
   .schedule-wrap {
     overflow-x: auto;
@@ -546,6 +584,7 @@
     .about-grid { grid-template-columns: 1fr 1.1fr; }
     .pricing-grid { grid-template-columns: repeat(3, 1fr); }
     .instructor-grid { grid-template-columns: repeat(3, 1fr); }
+    .gallery-grid { grid-template-columns: repeat(3, 1fr); }
     .contact-grid { grid-template-columns: 1fr 1fr; }
     section { padding: 96px 0; }
   }
@@ -623,6 +662,44 @@
           <li class="i18n" data-en="Beginner friendly, no experience needed" data-ar="مناسب للمبتدئات، لا حاجة لخبرة سابقة">Beginner friendly, no experience needed</li>
           <li class="i18n" data-en="Calm, private studio atmosphere" data-ar="أجواء استوديو هادئة وخاصة">Calm, private studio atmosphere</li>
         </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="container">
+    <p class="eyebrow i18n" data-en="Take a Look" data-ar="نظرة داخل الاستوديو">Take a Look</p>
+    <h2 class="i18n" data-en="Inside the Studio" data-ar="داخل الاستوديو">Inside the Studio</h2>
+    <p class="section-intro i18n"
+      data-en="A peek at our reformer room and studio spaces."
+      data-ar="لمحة عن صالة الريفورمر ومساحات الاستوديو.">
+      A peek at our reformer room and studio spaces.
+    </p>
+    <div class="gallery-grid">
+      <div class="gallery-tile">
+        <div class="gallery-visual g1" aria-hidden="true">🧘‍♀️</div>
+        <div class="gallery-caption i18n" data-en="Reformer Room" data-ar="صالة الريفورمر">Reformer Room</div>
+      </div>
+      <div class="gallery-tile">
+        <div class="gallery-visual g2" aria-hidden="true">🌿</div>
+        <div class="gallery-caption i18n" data-en="Reception & Lounge" data-ar="الاستقبال والصالة">Reception & Lounge</div>
+      </div>
+      <div class="gallery-tile">
+        <div class="gallery-visual g3" aria-hidden="true">🤝</div>
+        <div class="gallery-caption i18n" data-en="Small Group Class" data-ar="حصة جماعية صغيرة">Small Group Class</div>
+      </div>
+      <div class="gallery-tile">
+        <div class="gallery-visual g4" aria-hidden="true">🕯️</div>
+        <div class="gallery-caption i18n" data-en="Studio Details" data-ar="تفاصيل الاستوديو">Studio Details</div>
+      </div>
+      <div class="gallery-tile">
+        <div class="gallery-visual g5" aria-hidden="true">🚪</div>
+        <div class="gallery-caption i18n" data-en="Studio Entrance" data-ar="مدخل الاستوديو">Studio Entrance</div>
+      </div>
+      <div class="gallery-tile">
+        <div class="gallery-visual g6" aria-hidden="true">🪞</div>
+        <div class="gallery-caption i18n" data-en="Reformer Close-Up" data-ar="لقطة مقربة للريفورمر">Reformer Close-Up</div>
       </div>
     </div>
   </div>
@@ -736,7 +813,7 @@
       </div>
       <div class="price-card">
         <h3 class="i18n" data-en="Monthly Unlimited" data-ar="اشتراك شهري مفتوح">Monthly Unlimited</h3>
-        <div class="price"><sup>AED</sup>1,600</div>
+        <div class="price"><sup>AED</sup>950</div>
         <div class="per i18n" data-en="per month" data-ar="شهريًا">per month</div>
         <ul>
           <li class="i18n" data-en="Unlimited classes" data-ar="حصص غير محدودة">Unlimited classes</li>
