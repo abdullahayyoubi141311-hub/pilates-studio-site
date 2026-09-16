@@ -301,38 +301,6 @@
   }
 
   /* ---------- Schedule ---------- */
-  .schedule-wrap {
-    overflow-x: auto;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    background: var(--white);
-  }
-
-  table.schedule {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 640px;
-  }
-
-  table.schedule th, table.schedule td {
-    padding: 14px 16px;
-    text-align: start;
-    border-bottom: 1px solid var(--sand);
-    font-size: 0.92rem;
-  }
-
-  table.schedule thead th {
-    background: var(--sage-dark);
-    color: var(--white);
-    font-weight: 600;
-    position: sticky;
-    top: 0;
-  }
-
-  table.schedule tbody tr:last-child td { border-bottom: none; }
-
-  table.schedule tbody tr:hover { background: var(--cream-deep); }
-
   .class-tag {
     display: inline-block;
     padding: 3px 10px;
@@ -348,6 +316,135 @@
     color: var(--charcoal-soft);
     font-size: 0.88rem;
     margin-top: 16px;
+  }
+
+  .schedule-legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 0 28px;
+  }
+
+  .legend-pill {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: var(--white);
+    box-shadow: var(--shadow);
+    font-size: 0.82rem;
+    color: var(--charcoal);
+  }
+
+  .legend-pill .legend-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .legend-pill.p1 .legend-dot { background: var(--terracotta); }
+  .legend-pill.p2 .legend-dot { background: var(--sage-dark); }
+  .legend-pill.p3 .legend-dot { background: #b7a17a; }
+
+  .schedule-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .day-sessions {
+    padding: 4px 20px 18px;
+  }
+
+  .session-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px 16px;
+    padding: 14px 0;
+    border-top: 1px dashed var(--sand);
+  }
+
+  .day-sessions .session-row:first-child { border-top: none; }
+
+  .session-row.session-empty {
+    color: var(--charcoal-soft);
+    font-size: 0.88rem;
+    font-style: italic;
+  }
+
+  .session-main {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 10px;
+    font-size: 0.92rem;
+    color: var(--charcoal);
+  }
+
+  .session-time {
+    font-weight: 700;
+    color: var(--sage-dark);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .session-instructor {
+    color: var(--charcoal-soft);
+    font-size: 0.85rem;
+  }
+
+  .slot-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--sand);
+    border: none;
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--sage-dark);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .slot-toggle .chevron {
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+
+  .slot-toggle[aria-expanded="true"] .chevron {
+    transform: rotate(180deg);
+  }
+
+  .slot-grid {
+    list-style: none;
+    display: none;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 2px 0 14px;
+    width: 100%;
+  }
+
+  .slot-grid.open {
+    display: flex;
+  }
+
+  .slot-pill {
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: rgba(138, 154, 139, 0.14);
+    color: var(--sage-dark);
+    font-size: 0.78rem;
+    font-weight: 600;
   }
 
   /* ---------- Pricing ---------- */
@@ -482,6 +579,11 @@
   .instructor-card p {
     color: var(--charcoal-soft);
     font-size: 0.9rem;
+  }
+
+  .instructor-card .class-tag {
+    margin-top: 8px;
+    text-decoration: none;
   }
 
   /* ---------- Drinks Menu (Accordion) ---------- */
@@ -895,65 +997,234 @@
     <p class="eyebrow i18n" data-en="Timetable" data-ar="الجدول الزمني">Timetable</p>
     <h2 class="i18n" data-en="Class Schedule" data-ar="جدول الحصص">Class Schedule</h2>
     <p class="section-intro i18n"
-      data-en="Reserve your spot ahead of time — each class is limited to 6 reformers."
-      data-ar="احجزي مكانك مسبقًا — كل حصة محدودة بستة أجهزة ريفورمر فقط.">
-      Reserve your spot ahead of time — each class is limited to 6 reformers.
+      data-en="Reserve your spot ahead of time — every session is capped at 6 people, one per reformer."
+      data-ar="احجزي مكانك مسبقًا — كل حصة محدودة بستة أشخاص فقط، بعدد أجهزة الريفورمر.">
+      Reserve your spot ahead of time — every session is capped at 6 people, one per reformer.
     </p>
-    <div class="schedule-wrap">
-      <table class="schedule">
-        <thead>
-          <tr>
-            <th class="i18n" data-en="Day" data-ar="اليوم">Day</th>
-            <th class="i18n" data-en="Morning" data-ar="الصباح">Morning</th>
-            <th class="i18n" data-en="Midday" data-ar="الظهيرة">Midday</th>
-            <th class="i18n" data-en="Evening" data-ar="المساء">Evening</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="i18n" data-en="Sunday" data-ar="الأحد">Sunday</td>
-            <td>7:00 <span class="class-tag i18n" data-en="Reformer Flow" data-ar="ريفورمر فلو">Reformer Flow</span></td>
-            <td>12:30 <span class="class-tag i18n" data-en="Beginners" data-ar="مبتدئات">Beginners</span></td>
-            <td>6:30 <span class="class-tag i18n" data-en="Reformer Sculpt" data-ar="ريفورمر سكالبت">Reformer Sculpt</span></td>
-          </tr>
-          <tr>
-            <td class="i18n" data-en="Monday" data-ar="الإثنين">Monday</td>
-            <td>7:00 <span class="class-tag i18n" data-en="Reformer Sculpt" data-ar="ريفورمر سكالبت">Reformer Sculpt</span></td>
-            <td>1:00 <span class="class-tag i18n" data-en="Mixed Level" data-ar="مستوى مختلط">Mixed Level</span></td>
-            <td>7:00 <span class="class-tag i18n" data-en="Reformer Flow" data-ar="ريفورمر فلو">Reformer Flow</span></td>
-          </tr>
-          <tr>
-            <td class="i18n" data-en="Tuesday" data-ar="الثلاثاء">Tuesday</td>
-            <td>7:30 <span class="class-tag i18n" data-en="Beginners" data-ar="مبتدئات">Beginners</span></td>
-            <td>12:30 <span class="class-tag i18n" data-en="Reformer Flow" data-ar="ريفورمر فلو">Reformer Flow</span></td>
-            <td>6:30 <span class="class-tag i18n" data-en="Mixed Level" data-ar="مستوى مختلط">Mixed Level</span></td>
-          </tr>
-          <tr>
-            <td class="i18n" data-en="Wednesday" data-ar="الأربعاء">Wednesday</td>
-            <td>7:00 <span class="class-tag i18n" data-en="Reformer Sculpt" data-ar="ريفورمر سكالبت">Reformer Sculpt</span></td>
-            <td>1:00 <span class="class-tag i18n" data-en="Beginners" data-ar="مبتدئات">Beginners</span></td>
-            <td>7:00 <span class="class-tag i18n" data-en="Reformer Flow" data-ar="ريفورمر فلو">Reformer Flow</span></td>
-          </tr>
-          <tr>
-            <td class="i18n" data-en="Thursday" data-ar="الخميس">Thursday</td>
-            <td>7:30 <span class="class-tag i18n" data-en="Mixed Level" data-ar="مستوى مختلط">Mixed Level</span></td>
-            <td>12:30 <span class="class-tag i18n" data-en="Reformer Sculpt" data-ar="ريفورمر سكالبت">Reformer Sculpt</span></td>
-            <td>6:30 <span class="class-tag i18n" data-en="Reformer Flow" data-ar="ريفورمر فلو">Reformer Flow</span></td>
-          </tr>
-          <tr>
-            <td class="i18n" data-en="Friday" data-ar="الجمعة">Friday</td>
-            <td>9:00 <span class="class-tag i18n" data-en="Beginners" data-ar="مبتدئات">Beginners</span></td>
-            <td>—</td>
-            <td>5:00 <span class="class-tag i18n" data-en="Reformer Flow" data-ar="ريفورمر فلو">Reformer Flow</span></td>
-          </tr>
-          <tr>
-            <td class="i18n" data-en="Saturday" data-ar="السبت">Saturday</td>
-            <td>8:00 <span class="class-tag i18n" data-en="Reformer Sculpt" data-ar="ريفورمر سكالبت">Reformer Sculpt</span></td>
-            <td>11:00 <span class="class-tag i18n" data-en="Mixed Level" data-ar="مستوى مختلط">Mixed Level</span></td>
-            <td>—</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="schedule-legend">
+      <span class="legend-pill p1"><span class="legend-dot" aria-hidden="true"></span><span class="i18n" data-en="Morning · Lina Saeed" data-ar="الصباح · لينا سعيد">Morning · Lina Saeed</span></span>
+      <span class="legend-pill p2"><span class="legend-dot" aria-hidden="true"></span><span class="i18n" data-en="Midday · Mira Haddad" data-ar="الظهيرة · ميرا حداد">Midday · Mira Haddad</span></span>
+      <span class="legend-pill p3"><span class="legend-dot" aria-hidden="true"></span><span class="i18n" data-en="Evening · Rana Khalil" data-ar="المساء · رنا خليل">Evening · Rana Khalil</span></span>
+    </div>
+    <div class="schedule-list">
+      <details class="menu-cat">
+        <summary class="i18n" data-en="Sunday" data-ar="الأحد">Sunday</summary>
+        <div class="day-sessions">
+          <div class="session-row">
+            <div class="session-main">
+              <span class="session-time">7:00</span>
+              <span class="class-tag i18n" data-en="Reformer Flow" data-ar="ريفورمر فلو">Reformer Flow</span>
+              <span class="session-instructor i18n" data-en="with Lina Saeed" data-ar="مع لينا سعيد">with Lina Saeed</span>
+            </div>
+            <button class="slot-toggle" type="button" aria-expanded="false"><span class="i18n" data-en="6 slots" data-ar="6 مقاعد">6 slots</span><span class="chevron" aria-hidden="true">⌄</span></button>
+          </div>
+          <ul class="slot-grid" data-slots="6"></ul>
+          <div class="session-row">
+            <div class="session-main">
+              <span class="session-time">12:30</span>
+              <span class="class-tag i18n" data-en="Beginners" data-ar="مبتدئات">Beginners</span>
+              <span class="session-instructor i18n" data-en="with Mira Haddad" data-ar="مع ميرا حداد">with Mira Haddad</span>
+            </div>
+            <button class="slot-toggle" type="button" aria-expanded="false"><span class="i18n" data-en="6 slots" data-ar="6 مقاعد">6 slots</span><span class="chevron" aria-hidden="true">⌄</span></button>
+          </div>
+          <ul class="slot-grid" data-slots="6"></ul>
+          <div class="session-row">
+            <div class="session-main">
+              <span class="session-time">6:30</span>
+              <span class="class-tag i18n" data-en="Reformer Sculpt" data-ar="ريفورمر سكالبت">Reformer Sculpt</span>
+              <span class="session-instructor i18n" data-en="with Rana Khalil" data-ar="مع رنا خليل">with Rana Khalil</span>
+            </div>
+            <button class="slot-toggle" type="button" aria-expanded="false"><span class="i18n" data-en="6 slots" data-ar="6 مقاعد">6 slots</span><span class="chevron" aria-hidden="true">⌄</span></button>
+          </div>
+          <ul class="slot-grid" data-slots="6"></ul>
+        </div>
+      </details>
+
+      <details class="menu-cat">
+        <summary class="i18n" data-en="Monday" data-ar="الإثنين">Monday</summary>
+        <div class="day-sessions">
+          <div class="session-row">
+            <div class="session-main">
+              <span class="session-time">7:00</span>
+              <span class="class-tag i18n" data-en="Reformer Sculpt" data-ar="ريفورمر سكالبت">Reformer Sculpt</span>
+              <span class="session-instructor i18n" data-en="with Lina Saeed" data-ar="مع لينا سعيد">with Lina Saeed</span>
+            </div>
+            <button class="slot-toggle" type="button" aria-expanded="false"><span class="i18n" data-en="6 slots" data-ar="6 مقاعد">6 slots</span><span class="chevron" aria-hidden="true">⌄</span></button>
+          </div>
+          <ul class="slot-grid" data-slots="6"></ul>
+          <div class="session-row">
+            <div class="session-main">
+              <span class="session-time">1:00</span>
+              <span class="class-tag i18n" data-en="Mixed Level" data-ar="مستوى مختلط">Mixed Level</span>
+              <span class="session-instructor i18n" data-en="with Mira Haddad" data-ar="مع ميرا حداد">with Mira Haddad</span>
+            </div>
+            <button class="slot-toggle" type="button" aria-expanded="false"><span class="i18n" data-en="6 slots" data-ar="6 مقاعد">6 slots</span><span class="chevron" aria-hidden="true">⌄</span></button>
+          </div>
+          <ul class="slot-grid" data-slots="6"></ul>
+          <div class="session-row">
+            <div class="session-main">
+              <span class="session-time">7:00</span>
+              <span class="class-tag i18n" data-en="Reformer Flow" data-ar="ريفورمر فلو">Reformer Flow</span>
+              <span class="session-instructor i18n" data-en="with Rana Khalil" data-ar="مع رنا خليل">with Rana Khalil</span>
+            </div>
+            <button class="slot-toggle" type="button" aria-expanded="false"><span class="i18n" data-en="6 slots" data-ar="6 مقاعد">6 slots</span><span class="chevron" aria-hidden="true">⌄</span></button>
+          </div>
+          <ul class="slot-grid" data-slots="6"></ul>
+        </div>
+      </details>
+
+      <details class="menu-cat">
+        <summary class="i18n" data-en="Tuesday" data-ar="الثلاثاء">Tuesday</summary>
+        <div class="day-sessions">
+          <div class="session-row">
+            <div class="session-main">
+              <span class="session-time">7:30</span>
+              <span class="class-tag i18n" data-en="Beginners" data-ar="مبتدئات">Beginners</span>
+              <span class="session-instructor i18n" data-en="with Lina Saeed" data-ar="مع لينا سعيد">with Lina Saeed</span>
+            </div>
+            <button class="slot-toggle" type="button" aria-expanded="false"><span class="i18n" data-en="6 slots" data-ar="6 مقاعد">6 slots</span><span class="chevron" aria-hidden="true">⌄</span></button>
+          </div>
+          <ul class="slot-grid" data-slots="6"></ul>
+          <div class="session-row">
+            <div class="session-main">
+              <span class="session-time">12:30</span>
+              <span class="class-tag i18n" data-en="Reformer Flow" data-ar="ريفورمر فلو">Reformer Flow</span>
+              <span class="session-instructor i18n" data-en="with Mira Haddad" data-ar="مع ميرا حداد">with Mira Haddad</span>
+            </div>
+            <button class="slot-toggle" type="button" aria-expanded="false"><span class="i18n" data-en="6 slots" data-ar="6 مقاعد">6 slots</span><span class="chevron" aria-hidden="true">⌄</span></button>
+          </div>
+          <ul class="slot-grid" data-slots="6"></ul>
+          <div class="session-row">
+            <div class="session-main">
+              <span class="session-time">6:30</span>
+              <span class="class-tag i18n" data-en="Mixed Level" data-ar="مستوى مختلط">Mixed Level</span>
+              <span class="session-instructor i18n" data-en="with Rana Khalil" data-ar="مع رنا خليل">with Rana Khalil</span>
+            </div>
+            <button class="slot-toggle" type="button" aria-expanded="false"><span class="i18n" data-en="6 slots" data-ar="6 مقاعد">6 slots</span><span class="chevron" aria-hidden="true">⌄</span></button>
+          </div>
+          <ul class="slot-grid" data-slots="6"></ul>
+        </div>
+      </details>
+
+      <details class="menu-cat">
+        <summary class="i18n" data-en="Wednesday" data-ar="الأربعاء">Wednesday</summary>
+        <div class="day-sessions">
+          <div class="session-row">
+            <div class="session-main">
+              <span class="session-time">7:00</span>
+              <span class="class-tag i18n" data-en="Reformer Sculpt" data-ar="ريفورمر سكالبت">Reformer Sculpt</span>
+              <span class="session-instructor i18n" data-en="with Lina Saeed" data-ar="مع لينا سعيد">with Lina Saeed</span>
+            </div>
+            <button class="slot-toggle" type="button" aria-expanded="false"><span class="i18n" data-en="6 slots" data-ar="6 مقاعد">6 slots</span><span class="chevron" aria-hidden="true">⌄</span></button>
+          </div>
+          <ul class="slot-grid" data-slots="6"></ul>
+          <div class="session-row">
+            <div class="session-main">
+              <span class="session-time">1:00</span>
+              <span class="class-tag i18n" data-en="Beginners" data-ar="مبتدئات">Beginners</span>
+              <span class="session-instructor i18n" data-en="with Mira Haddad" data-ar="مع ميرا حداد">with Mira Haddad</span>
+            </div>
+            <button class="slot-toggle" type="button" aria-expanded="false"><span class="i18n" data-en="6 slots" data-ar="6 مقاعد">6 slots</span><span class="chevron" aria-hidden="true">⌄</span></button>
+          </div>
+          <ul class="slot-grid" data-slots="6"></ul>
+          <div class="session-row">
+            <div class="session-main">
+              <span class="session-time">7:00</span>
+              <span class="class-tag i18n" data-en="Reformer Flow" data-ar="ريفورمر فلو">Reformer Flow</span>
+              <span class="session-instructor i18n" data-en="with Rana Khalil" data-ar="مع رنا خليل">with Rana Khalil</span>
+            </div>
+            <button class="slot-toggle" type="button" aria-expanded="false"><span class="i18n" data-en="6 slots" data-ar="6 مقاعد">6 slots</span><span class="chevron" aria-hidden="true">⌄</span></button>
+          </div>
+          <ul class="slot-grid" data-slots="6"></ul>
+        </div>
+      </details>
+
+      <details class="menu-cat">
+        <summary class="i18n" data-en="Thursday" data-ar="الخميس">Thursday</summary>
+        <div class="day-sessions">
+          <div class="session-row">
+            <div class="session-main">
+              <span class="session-time">7:30</span>
+              <span class="class-tag i18n" data-en="Mixed Level" data-ar="مستوى مختلط">Mixed Level</span>
+              <span class="session-instructor i18n" data-en="with Lina Saeed" data-ar="مع لينا سعيد">with Lina Saeed</span>
+            </div>
+            <button class="slot-toggle" type="button" aria-expanded="false"><span class="i18n" data-en="6 slots" data-ar="6 مقاعد">6 slots</span><span class="chevron" aria-hidden="true">⌄</span></button>
+          </div>
+          <ul class="slot-grid" data-slots="6"></ul>
+          <div class="session-row">
+            <div class="session-main">
+              <span class="session-time">12:30</span>
+              <span class="class-tag i18n" data-en="Reformer Sculpt" data-ar="ريفورمر سكالبت">Reformer Sculpt</span>
+              <span class="session-instructor i18n" data-en="with Mira Haddad" data-ar="مع ميرا حداد">with Mira Haddad</span>
+            </div>
+            <button class="slot-toggle" type="button" aria-expanded="false"><span class="i18n" data-en="6 slots" data-ar="6 مقاعد">6 slots</span><span class="chevron" aria-hidden="true">⌄</span></button>
+          </div>
+          <ul class="slot-grid" data-slots="6"></ul>
+          <div class="session-row">
+            <div class="session-main">
+              <span class="session-time">6:30</span>
+              <span class="class-tag i18n" data-en="Reformer Flow" data-ar="ريفورمر فلو">Reformer Flow</span>
+              <span class="session-instructor i18n" data-en="with Rana Khalil" data-ar="مع رنا خليل">with Rana Khalil</span>
+            </div>
+            <button class="slot-toggle" type="button" aria-expanded="false"><span class="i18n" data-en="6 slots" data-ar="6 مقاعد">6 slots</span><span class="chevron" aria-hidden="true">⌄</span></button>
+          </div>
+          <ul class="slot-grid" data-slots="6"></ul>
+        </div>
+      </details>
+
+      <details class="menu-cat">
+        <summary class="i18n" data-en="Friday" data-ar="الجمعة">Friday</summary>
+        <div class="day-sessions">
+          <div class="session-row">
+            <div class="session-main">
+              <span class="session-time">9:00</span>
+              <span class="class-tag i18n" data-en="Beginners" data-ar="مبتدئات">Beginners</span>
+              <span class="session-instructor i18n" data-en="with Lina Saeed" data-ar="مع لينا سعيد">with Lina Saeed</span>
+            </div>
+            <button class="slot-toggle" type="button" aria-expanded="false"><span class="i18n" data-en="6 slots" data-ar="6 مقاعد">6 slots</span><span class="chevron" aria-hidden="true">⌄</span></button>
+          </div>
+          <ul class="slot-grid" data-slots="6"></ul>
+          <div class="session-row session-empty">
+            <span class="i18n" data-en="Studio closed at midday" data-ar="الاستوديو مغلق ظهرًا">Studio closed at midday</span>
+          </div>
+          <div class="session-row">
+            <div class="session-main">
+              <span class="session-time">5:00</span>
+              <span class="class-tag i18n" data-en="Reformer Flow" data-ar="ريفورمر فلو">Reformer Flow</span>
+              <span class="session-instructor i18n" data-en="with Rana Khalil" data-ar="مع رنا خليل">with Rana Khalil</span>
+            </div>
+            <button class="slot-toggle" type="button" aria-expanded="false"><span class="i18n" data-en="6 slots" data-ar="6 مقاعد">6 slots</span><span class="chevron" aria-hidden="true">⌄</span></button>
+          </div>
+          <ul class="slot-grid" data-slots="6"></ul>
+        </div>
+      </details>
+
+      <details class="menu-cat">
+        <summary class="i18n" data-en="Saturday" data-ar="السبت">Saturday</summary>
+        <div class="day-sessions">
+          <div class="session-row">
+            <div class="session-main">
+              <span class="session-time">8:00</span>
+              <span class="class-tag i18n" data-en="Reformer Sculpt" data-ar="ريفورمر سكالبت">Reformer Sculpt</span>
+              <span class="session-instructor i18n" data-en="with Lina Saeed" data-ar="مع لينا سعيد">with Lina Saeed</span>
+            </div>
+            <button class="slot-toggle" type="button" aria-expanded="false"><span class="i18n" data-en="6 slots" data-ar="6 مقاعد">6 slots</span><span class="chevron" aria-hidden="true">⌄</span></button>
+          </div>
+          <ul class="slot-grid" data-slots="6"></ul>
+          <div class="session-row">
+            <div class="session-main">
+              <span class="session-time">11:00</span>
+              <span class="class-tag i18n" data-en="Mixed Level" data-ar="مستوى مختلط">Mixed Level</span>
+              <span class="session-instructor i18n" data-en="with Mira Haddad" data-ar="مع ميرا حداد">with Mira Haddad</span>
+            </div>
+            <button class="slot-toggle" type="button" aria-expanded="false"><span class="i18n" data-en="6 slots" data-ar="6 مقاعد">6 slots</span><span class="chevron" aria-hidden="true">⌄</span></button>
+          </div>
+          <ul class="slot-grid" data-slots="6"></ul>
+          <div class="session-row session-empty">
+            <span class="i18n" data-en="Studio closed in the evening" data-ar="الاستوديو مغلق مساءً">Studio closed in the evening</span>
+          </div>
+        </div>
+      </details>
     </div>
     <p class="schedule-note i18n"
       data-en="Times shown are start times. Please arrive 10 minutes early for your first class."
@@ -1025,6 +1296,7 @@
           data-ar="نص تجريبي: مدربة بيلاتس ريفورمر معتمدة، شغوفة بمساعدة المتدربات على بناء القوة بأمان ووعي.">
           Placeholder bio: certified reformer Pilates instructor with a passion for helping clients build strength safely and mindfully.
         </p>
+        <a class="class-tag i18n" href="#schedule" data-en="Teaches mornings" data-ar="تدرّب في الصباح">Teaches mornings</a>
       </div>
       <div class="instructor-card">
         <div class="avatar a2">MH</div>
@@ -1035,6 +1307,7 @@
           data-ar="نص تجريبي: متخصصة في حصص المبتدئات وحركات ما بعد التأهيل، مع التركيز على الوضعية الصحيحة.">
           Placeholder bio: specializes in beginner-friendly classes and post-rehab movement, focused on proper form.
         </p>
+        <a class="class-tag i18n" href="#schedule" data-en="Teaches middays" data-ar="تدرّب في الظهيرة">Teaches middays</a>
       </div>
       <div class="instructor-card">
         <div class="avatar a3">RK</div>
@@ -1045,6 +1318,7 @@
           data-ar="نص تجريبي: تقدم أسلوبًا حيويًا يركز على النحت في كل حصة ريفورمر تقدمها.">
           Placeholder bio: brings an energetic, sculpt-focused style to every reformer class she teaches.
         </p>
+        <a class="class-tag i18n" href="#schedule" data-en="Teaches evenings" data-ar="تدرّب في المساء">Teaches evenings</a>
       </div>
     </div>
   </div>
@@ -1349,6 +1623,20 @@
 </footer>
 
 <script>
+  function renderSlots(lang) {
+    var isAr = lang === 'ar';
+    document.querySelectorAll('.slot-grid').forEach(function (ul) {
+      var count = parseInt(ul.getAttribute('data-slots') || '6', 10);
+      ul.innerHTML = '';
+      for (var i = 1; i <= count; i++) {
+        var li = document.createElement('li');
+        li.className = 'slot-pill';
+        li.textContent = isAr ? ('مقعد ' + i) : ('Spot ' + i);
+        ul.appendChild(li);
+      }
+    });
+  }
+
   function setLang(lang) {
     var isAr = lang === 'ar';
     document.documentElement.lang = lang;
@@ -1359,8 +1647,20 @@
       var text = el.getAttribute(isAr ? 'data-ar' : 'data-en');
       if (text !== null) el.innerHTML = text;
     });
+    renderSlots(lang);
     try { localStorage.setItem('studio-noor-lang', lang); } catch (e) {}
   }
+
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('.slot-toggle');
+    if (!btn) return;
+    var grid = btn.closest('.session-row').nextElementSibling;
+    if (!grid || !grid.classList.contains('slot-grid')) return;
+    var isOpen = grid.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  renderSlots('en');
 
   (function () {
     var saved = null;
