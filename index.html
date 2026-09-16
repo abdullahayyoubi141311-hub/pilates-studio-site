@@ -484,6 +484,57 @@
     font-size: 0.9rem;
   }
 
+  /* ---------- Shop ---------- */
+  .shop-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .product-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .product-visual {
+    display: block;
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+  }
+
+  .product-body {
+    padding: 24px 22px 28px;
+  }
+
+  .product-card h3 {
+    font-size: 1.08rem;
+    color: var(--sage-dark);
+    margin-bottom: 6px;
+  }
+
+  .product-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 12px;
+  }
+
+  .product-price sup {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-inline-end: 4px;
+  }
+
+  .product-card p.product-desc {
+    color: var(--charcoal-soft);
+    font-size: 0.9rem;
+    margin: 0 0 20px;
+  }
+
   /* ---------- Post-Class Drinks ---------- */
   .drinks-grid {
     display: grid;
@@ -618,6 +669,7 @@
     .instructor-grid { grid-template-columns: repeat(3, 1fr); }
     .gallery-grid { grid-template-columns: repeat(3, 1fr); }
     .drinks-grid { grid-template-columns: repeat(2, 1fr); }
+    .shop-grid { grid-template-columns: repeat(2, 1fr); max-width: 720px; margin: 0 auto; }
     .contact-grid { grid-template-columns: 1fr 1fr; }
     section { padding: 96px 0; }
   }
@@ -961,6 +1013,46 @@
             data-ar="لا بأس بهما، فقط احتسبيهما إلى جانب الماء وليس بديلاً عنه.">
             Fine, just count them alongside your water rather than instead of it.
           </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="shop" style="background: var(--cream-deep, var(--sand));">
+  <div class="container">
+    <p class="eyebrow i18n" data-en="Shop" data-ar="تسوقي">Shop</p>
+    <h2 class="i18n" data-en="Studio Tumblers" data-ar="أكواب الاستوديو">Studio Tumblers</h2>
+    <p class="section-intro i18n"
+      data-en="Reusable tumblers available at reception, AED 99 each."
+      data-ar="أكواب معاد استخدامها متوفرة في الاستقبال، بسعر 99 درهمًا للكوب.">
+      Reusable tumblers available at reception, AED 99 each.
+    </p>
+    <div class="shop-grid">
+      <div class="product-card">
+        <img class="product-visual" src="assets/shop/mug-lavender.jpg" alt="Cava Bien lavender tumbler with straw" loading="lazy" width="700" height="1023">
+        <div class="product-body">
+          <h3 class="i18n" data-en="Cava Bien Tumbler" data-ar="كوب كافا بيان">Cava Bien Tumbler</h3>
+          <div class="product-price"><sup>AED</sup>99</div>
+          <p class="product-desc i18n"
+            data-en="Stay hydrated in style during and after class — reusable tumbler with a matching straw."
+            data-ar="ابقي رطبة بأناقة خلال الحصة وبعدها — كوب معاد الاستخدام مع مصاصة مطابقة.">
+            Stay hydrated in style during and after class — reusable tumbler with a matching straw.
+          </p>
+          <a class="btn btn-secondary i18n" href="https://wa.me/971501234567?text=Hi%20Studio%20Noor%2C%20I%27d%20like%20to%20order%20a%20Cava%20Bien%20tumbler%20(AED%2099)" target="_blank" rel="noopener" data-en="Order via WhatsApp" data-ar="اطلبي عبر واتساب">Order via WhatsApp</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <img class="product-visual" src="assets/shop/mug-travel.jpg" alt="Yeway travel tumbler with desert design" loading="lazy" width="700" height="679">
+        <div class="product-body">
+          <h3 class="i18n" data-en="Yeway Travel Tumbler" data-ar="كوب السفر Yeway">Yeway Travel Tumbler</h3>
+          <div class="product-price"><sup>AED</sup>99</div>
+          <p class="product-desc i18n"
+            data-en="An insulated travel tumbler with a hand-painted desert design — perfect for hydration on the go."
+            data-ar="كوب سفر معزول بتصميم صحراوي مرسوم يدويًا — مثالي للترطيب أثناء التنقل.">
+            An insulated travel tumbler with a hand-painted desert design — perfect for hydration on the go.
+          </p>
+          <a class="btn btn-secondary i18n" href="https://wa.me/971501234567?text=Hi%20Studio%20Noor%2C%20I%27d%20like%20to%20order%20a%20Yeway%20travel%20tumbler%20(AED%2099)" target="_blank" rel="noopener" data-en="Order via WhatsApp" data-ar="اطلبي عبر واتساب">Order via WhatsApp</a>
         </div>
       </div>
     </div>
