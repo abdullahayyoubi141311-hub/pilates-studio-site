@@ -447,6 +447,149 @@
     font-weight: 600;
   }
 
+  /* ---------- Booking ---------- */
+  .slot-pill {
+    border: none;
+    font-family: inherit;
+  }
+
+  button.slot-pill {
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  button.slot-pill.available {
+    background: rgba(138, 154, 139, 0.14);
+    color: var(--sage-dark);
+  }
+
+  button.slot-pill.available:hover {
+    background: rgba(138, 154, 139, 0.28);
+  }
+
+  button.slot-pill.booked {
+    background: var(--sand);
+    color: var(--charcoal-soft);
+    cursor: not-allowed;
+    text-decoration: line-through;
+  }
+
+  button.slot-pill.selected {
+    background: var(--terracotta);
+    color: var(--white);
+  }
+
+  .slot-grid.loading {
+    display: flex;
+  }
+
+  .slot-status {
+    width: 100%;
+    font-size: 0.82rem;
+    color: var(--charcoal-soft);
+    padding: 2px 0 10px;
+  }
+
+  .booking-panel {
+    width: 100%;
+    background: var(--cream-deep, var(--sand));
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin: 4px 0 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .booking-panel input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--sand);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    background: var(--white);
+    color: var(--charcoal);
+  }
+
+  .booking-panel .booking-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .booking-panel .btn {
+    padding: 10px 20px;
+    font-size: 0.86rem;
+  }
+
+  .booking-msg {
+    width: 100%;
+    font-size: 0.85rem;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin: 4px 0 14px;
+  }
+
+  .booking-msg.success {
+    background: rgba(138, 154, 139, 0.16);
+    color: var(--sage-dark);
+  }
+
+  .booking-msg.error {
+    background: rgba(196, 122, 90, 0.14);
+    color: #8f4f36;
+  }
+
+  .booking-msg code {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-family: inherit;
+  }
+
+  .manage-booking-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 28px 24px;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .manage-booking-card .booking-panel {
+    background: var(--cream-deep, var(--sand));
+  }
+
+  .manage-booking-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .manage-booking-card label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .manage-booking-card select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--sand);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    background: var(--white);
+    color: var(--charcoal);
+  }
+
   /* ---------- Pricing ---------- */
   .pricing-grid {
     display: grid;
@@ -1010,7 +1153,7 @@
       <details class="menu-cat">
         <summary class="i18n" data-en="Sunday" data-ar="الأحد">Sunday</summary>
         <div class="day-sessions">
-          <div class="session-row">
+          <div class="session-row" data-day="0" data-time="07:00" data-class-key="Reformer Flow" data-instructor-key="Lina Saeed">
             <div class="session-main">
               <span class="session-time">7:00</span>
               <span class="class-tag i18n" data-en="Reformer Flow" data-ar="ريفورمر فلو">Reformer Flow</span>
@@ -1019,7 +1162,7 @@
             <button class="slot-toggle" type="button" aria-expanded="false"><span class="i18n" data-en="6 slots" data-ar="6 مقاعد">6 slots</span><span class="chevron" aria-hidden="true">⌄</span></button>
           </div>
           <ul class="slot-grid" data-slots="6"></ul>
-          <div class="session-row">
+          <div class="session-row" data-day="0" data-time="12:30" data-class-key="Beginners" data-instructor-key="Mira Haddad">
             <div class="session-main">
               <span class="session-time">12:30</span>
               <span class="class-tag i18n" data-en="Beginners" data-ar="مبتدئات">Beginners</span>
@@ -1028,7 +1171,7 @@
             <button class="slot-toggle" type="button" aria-expanded="false"><span class="i18n" data-en="6 slots" data-ar="6 مقاعد">6 slots</span><span class="chevron" aria-hidden="true">⌄</span></button>
           </div>
           <ul class="slot-grid" data-slots="6"></ul>
-          <div class="session-row">
+          <div class="session-row" data-day="0" data-time="18:30" data-class-key="Reformer Sculpt" data-instructor-key="Rana Khalil">
             <div class="session-main">
               <span class="session-time">6:30</span>
               <span class="class-tag i18n" data-en="Reformer Sculpt" data-ar="ريفورمر سكالبت">Reformer Sculpt</span>
@@ -1043,7 +1186,7 @@
       <details class="menu-cat">
         <summary class="i18n" data-en="Monday" data-ar="الإثنين">Monday</summary>
         <div class="day-sessions">
-          <div class="session-row">
+          <div class="session-row" data-day="1" data-time="07:00" data-class-key="Reformer Sculpt" data-instructor-key="Lina Saeed">
             <div class="session-main">
               <span class="session-time">7:00</span>
               <span class="class-tag i18n" data-en="Reformer Sculpt" data-ar="ريفورمر سكالبت">Reformer Sculpt</span>
@@ -1052,7 +1195,7 @@
             <button class="slot-toggle" type="button" aria-expanded="false"><span class="i18n" data-en="6 slots" data-ar="6 مقاعد">6 slots</span><span class="chevron" aria-hidden="true">⌄</span></button>
           </div>
           <ul class="slot-grid" data-slots="6"></ul>
-          <div class="session-row">
+          <div class="session-row" data-day="1" data-time="13:00" data-class-key="Mixed Level" data-instructor-key="Mira Haddad">
             <div class="session-main">
               <span class="session-time">1:00</span>
               <span class="class-tag i18n" data-en="Mixed Level" data-ar="مستوى مختلط">Mixed Level</span>
@@ -1061,7 +1204,7 @@
             <button class="slot-toggle" type="button" aria-expanded="false"><span class="i18n" data-en="6 slots" data-ar="6 مقاعد">6 slots</span><span class="chevron" aria-hidden="true">⌄</span></button>
           </div>
           <ul class="slot-grid" data-slots="6"></ul>
-          <div class="session-row">
+          <div class="session-row" data-day="1" data-time="19:00" data-class-key="Reformer Flow" data-instructor-key="Rana Khalil">
             <div class="session-main">
               <span class="session-time">7:00</span>
               <span class="class-tag i18n" data-en="Reformer Flow" data-ar="ريفورمر فلو">Reformer Flow</span>
@@ -1076,7 +1219,7 @@
       <details class="menu-cat">
         <summary class="i18n" data-en="Tuesday" data-ar="الثلاثاء">Tuesday</summary>
         <div class="day-sessions">
-          <div class="session-row">
+          <div class="session-row" data-day="2" data-time="07:30" data-class-key="Beginners" data-instructor-key="Lina Saeed">
             <div class="session-main">
               <span class="session-time">7:30</span>
               <span class="class-tag i18n" data-en="Beginners" data-ar="مبتدئات">Beginners</span>
@@ -1085,7 +1228,7 @@
             <button class="slot-toggle" type="button" aria-expanded="false"><span class="i18n" data-en="6 slots" data-ar="6 مقاعد">6 slots</span><span class="chevron" aria-hidden="true">⌄</span></button>
           </div>
           <ul class="slot-grid" data-slots="6"></ul>
-          <div class="session-row">
+          <div class="session-row" data-day="2" data-time="12:30" data-class-key="Reformer Flow" data-instructor-key="Mira Haddad">
             <div class="session-main">
               <span class="session-time">12:30</span>
               <span class="class-tag i18n" data-en="Reformer Flow" data-ar="ريفورمر فلو">Reformer Flow</span>
@@ -1094,7 +1237,7 @@
             <button class="slot-toggle" type="button" aria-expanded="false"><span class="i18n" data-en="6 slots" data-ar="6 مقاعد">6 slots</span><span class="chevron" aria-hidden="true">⌄</span></button>
           </div>
           <ul class="slot-grid" data-slots="6"></ul>
-          <div class="session-row">
+          <div class="session-row" data-day="2" data-time="18:30" data-class-key="Mixed Level" data-instructor-key="Rana Khalil">
             <div class="session-main">
               <span class="session-time">6:30</span>
               <span class="class-tag i18n" data-en="Mixed Level" data-ar="مستوى مختلط">Mixed Level</span>
@@ -1109,7 +1252,7 @@
       <details class="menu-cat">
         <summary class="i18n" data-en="Wednesday" data-ar="الأربعاء">Wednesday</summary>
         <div class="day-sessions">
-          <div class="session-row">
+          <div class="session-row" data-day="3" data-time="07:00" data-class-key="Reformer Sculpt" data-instructor-key="Lina Saeed">
             <div class="session-main">
               <span class="session-time">7:00</span>
               <span class="class-tag i18n" data-en="Reformer Sculpt" data-ar="ريفورمر سكالبت">Reformer Sculpt</span>
@@ -1118,7 +1261,7 @@
             <button class="slot-toggle" type="button" aria-expanded="false"><span class="i18n" data-en="6 slots" data-ar="6 مقاعد">6 slots</span><span class="chevron" aria-hidden="true">⌄</span></button>
           </div>
           <ul class="slot-grid" data-slots="6"></ul>
-          <div class="session-row">
+          <div class="session-row" data-day="3" data-time="13:00" data-class-key="Beginners" data-instructor-key="Mira Haddad">
             <div class="session-main">
               <span class="session-time">1:00</span>
               <span class="class-tag i18n" data-en="Beginners" data-ar="مبتدئات">Beginners</span>
@@ -1127,7 +1270,7 @@
             <button class="slot-toggle" type="button" aria-expanded="false"><span class="i18n" data-en="6 slots" data-ar="6 مقاعد">6 slots</span><span class="chevron" aria-hidden="true">⌄</span></button>
           </div>
           <ul class="slot-grid" data-slots="6"></ul>
-          <div class="session-row">
+          <div class="session-row" data-day="3" data-time="19:00" data-class-key="Reformer Flow" data-instructor-key="Rana Khalil">
             <div class="session-main">
               <span class="session-time">7:00</span>
               <span class="class-tag i18n" data-en="Reformer Flow" data-ar="ريفورمر فلو">Reformer Flow</span>
@@ -1142,7 +1285,7 @@
       <details class="menu-cat">
         <summary class="i18n" data-en="Thursday" data-ar="الخميس">Thursday</summary>
         <div class="day-sessions">
-          <div class="session-row">
+          <div class="session-row" data-day="4" data-time="07:30" data-class-key="Mixed Level" data-instructor-key="Lina Saeed">
             <div class="session-main">
               <span class="session-time">7:30</span>
               <span class="class-tag i18n" data-en="Mixed Level" data-ar="مستوى مختلط">Mixed Level</span>
@@ -1151,7 +1294,7 @@
             <button class="slot-toggle" type="button" aria-expanded="false"><span class="i18n" data-en="6 slots" data-ar="6 مقاعد">6 slots</span><span class="chevron" aria-hidden="true">⌄</span></button>
           </div>
           <ul class="slot-grid" data-slots="6"></ul>
-          <div class="session-row">
+          <div class="session-row" data-day="4" data-time="12:30" data-class-key="Reformer Sculpt" data-instructor-key="Mira Haddad">
             <div class="session-main">
               <span class="session-time">12:30</span>
               <span class="class-tag i18n" data-en="Reformer Sculpt" data-ar="ريفورمر سكالبت">Reformer Sculpt</span>
@@ -1160,7 +1303,7 @@
             <button class="slot-toggle" type="button" aria-expanded="false"><span class="i18n" data-en="6 slots" data-ar="6 مقاعد">6 slots</span><span class="chevron" aria-hidden="true">⌄</span></button>
           </div>
           <ul class="slot-grid" data-slots="6"></ul>
-          <div class="session-row">
+          <div class="session-row" data-day="4" data-time="18:30" data-class-key="Reformer Flow" data-instructor-key="Rana Khalil">
             <div class="session-main">
               <span class="session-time">6:30</span>
               <span class="class-tag i18n" data-en="Reformer Flow" data-ar="ريفورمر فلو">Reformer Flow</span>
@@ -1175,7 +1318,7 @@
       <details class="menu-cat">
         <summary class="i18n" data-en="Friday" data-ar="الجمعة">Friday</summary>
         <div class="day-sessions">
-          <div class="session-row">
+          <div class="session-row" data-day="5" data-time="09:00" data-class-key="Beginners" data-instructor-key="Lina Saeed">
             <div class="session-main">
               <span class="session-time">9:00</span>
               <span class="class-tag i18n" data-en="Beginners" data-ar="مبتدئات">Beginners</span>
@@ -1187,7 +1330,7 @@
           <div class="session-row session-empty">
             <span class="i18n" data-en="Studio closed at midday" data-ar="الاستوديو مغلق ظهرًا">Studio closed at midday</span>
           </div>
-          <div class="session-row">
+          <div class="session-row" data-day="5" data-time="17:00" data-class-key="Reformer Flow" data-instructor-key="Rana Khalil">
             <div class="session-main">
               <span class="session-time">5:00</span>
               <span class="class-tag i18n" data-en="Reformer Flow" data-ar="ريفورمر فلو">Reformer Flow</span>
@@ -1202,7 +1345,7 @@
       <details class="menu-cat">
         <summary class="i18n" data-en="Saturday" data-ar="السبت">Saturday</summary>
         <div class="day-sessions">
-          <div class="session-row">
+          <div class="session-row" data-day="6" data-time="08:00" data-class-key="Reformer Sculpt" data-instructor-key="Lina Saeed">
             <div class="session-main">
               <span class="session-time">8:00</span>
               <span class="class-tag i18n" data-en="Reformer Sculpt" data-ar="ريفورمر سكالبت">Reformer Sculpt</span>
@@ -1211,7 +1354,7 @@
             <button class="slot-toggle" type="button" aria-expanded="false"><span class="i18n" data-en="6 slots" data-ar="6 مقاعد">6 slots</span><span class="chevron" aria-hidden="true">⌄</span></button>
           </div>
           <ul class="slot-grid" data-slots="6"></ul>
-          <div class="session-row">
+          <div class="session-row" data-day="6" data-time="11:00" data-class-key="Mixed Level" data-instructor-key="Mira Haddad">
             <div class="session-main">
               <span class="session-time">11:00</span>
               <span class="class-tag i18n" data-en="Mixed Level" data-ar="مستوى مختلط">Mixed Level</span>
@@ -1231,6 +1374,32 @@
       data-ar="الأوقات الموضحة هي أوقات البدء. يرجى الحضور قبل 10 دقائق من حصتك الأولى.">
       Times shown are start times. Please arrive 10 minutes early for your first class.
     </p>
+  </div>
+</section>
+
+<section id="manage-booking">
+  <div class="container">
+    <p class="eyebrow i18n" data-en="Already Booked?" data-ar="حجزتِ بالفعل؟">Already Booked?</p>
+    <h2 class="i18n" data-en="Manage Your Booking" data-ar="إدارة حجزك">Manage Your Booking</h2>
+    <p class="section-intro i18n"
+      data-en="Enter your booking ID and confirmation code to cancel or change your session. Changes are only possible up to 24 hours before class starts."
+      data-ar="أدخلي رقم الحجز ورمز التأكيد لإلغاء أو تعديل حصتك. يمكن إجراء التغييرات حتى 24 ساعة قبل بدء الحصة فقط.">
+      Enter your booking ID and confirmation code to cancel or change your session. Changes are only possible up to 24 hours before class starts.
+    </p>
+    <div class="manage-booking-card">
+      <form id="find-booking-form">
+        <div>
+          <label class="i18n" for="mb-id" data-en="Booking ID" data-ar="رقم الحجز">Booking ID</label>
+          <input type="text" id="mb-id" name="mb-id" autocomplete="off" required>
+        </div>
+        <div>
+          <label class="i18n" for="mb-code" data-en="Confirmation Code" data-ar="رمز التأكيد">Confirmation Code</label>
+          <input type="text" id="mb-code" name="mb-code" autocomplete="off" required>
+        </div>
+        <button type="submit" class="btn btn-primary i18n" data-en="Find Booking" data-ar="البحث عن الحجز">Find Booking</button>
+      </form>
+      <div id="manage-result"></div>
+    </div>
   </div>
 </section>
 
@@ -1623,21 +1792,450 @@
 </footer>
 
 <script>
-  function renderSlots(lang) {
-    var isAr = lang === 'ar';
-    document.querySelectorAll('.slot-grid').forEach(function (ul) {
-      var count = parseInt(ul.getAttribute('data-slots') || '6', 10);
-      ul.innerHTML = '';
-      for (var i = 1; i <= count; i++) {
-        var li = document.createElement('li');
-        li.className = 'slot-pill';
-        li.textContent = isAr ? ('مقعد ' + i) : ('Spot ' + i);
-        ul.appendChild(li);
+  // Set this to your deployed booking API before going live — see server/README.md.
+  var API_BASE_URL = 'https://REPLACE-WITH-YOUR-WORKER.workers.dev';
+
+  var currentLang = 'en';
+
+  var STR = {
+    checking: { en: 'Checking availability…', ar: 'جاري التحقق من التوفر…' },
+    unavailableService: { en: 'Booking is temporarily unavailable. Please book via WhatsApp instead.', ar: 'الحجز غير متاح مؤقتًا. يرجى الحجز عبر واتساب بدلاً من ذلك.' },
+    slotLabel: { en: 'Slot', ar: 'مقعد' },
+    booked: { en: 'Booked', ar: 'محجوز' },
+    namePlaceholder: { en: 'Your name', ar: 'اسمك' },
+    phonePlaceholder: { en: 'WhatsApp number', ar: 'رقم واتساب' },
+    confirmBooking: { en: 'Confirm Booking', ar: 'تأكيد الحجز' },
+    cancelForm: { en: 'Cancel', ar: 'إلغاء' },
+    bookThisSlot: { en: 'Book this slot', ar: 'احجزي هذا المقعد' },
+    fillNamePhone: { en: 'Please enter your name and WhatsApp number.', ar: 'يرجى إدخال اسمك ورقم واتساب.' },
+    booking: { en: 'Booking…', ar: 'جارٍ الحجز…' },
+    bookedSuccess: { en: 'Booked! Save your booking ID and confirmation code to cancel or change it later:', ar: 'تم الحجز! احتفظي برقم الحجز ورمز التأكيد لإلغائه أو تعديله لاحقًا:' },
+    bookingId: { en: 'Booking ID', ar: 'رقم الحجز' },
+    code: { en: 'Code', ar: 'الرمز' },
+    sessionFull: { en: 'Sorry, this session just filled up.', ar: 'عذرًا، اكتملت هذه الحصة للتو.' },
+    genericError: { en: 'Something went wrong. Please try again or book via WhatsApp.', ar: 'حدث خطأ ما. يرجى المحاولة مرة أخرى أو الحجز عبر واتساب.' },
+    fillIdCode: { en: 'Please enter both your booking ID and confirmation code.', ar: 'يرجى إدخال رقم الحجز ورمز التأكيد.' },
+    searching: { en: 'Searching…', ar: 'جارٍ البحث…' },
+    notFound: { en: 'No booking found with that ID and code.', ar: 'لم يتم العثور على حجز بهذا الرقم والرمز.' },
+    yourBooking: { en: 'Your booking', ar: 'حجزك' },
+    hoursLeft: { en: 'hours until class', ar: 'ساعة حتى الحصة' },
+    canChange: { en: 'You can still cancel or change this booking.', ar: 'لا يزال بإمكانك إلغاء هذا الحجز أو تعديله.' },
+    tooLate: { en: 'This class starts in less than 24 hours, so it can no longer be cancelled or changed online — please message us on WhatsApp.', ar: 'تبدأ هذه الحصة خلال أقل من 24 ساعة، لذا لم يعد بالإمكان إلغاؤها أو تعديلها عبر الموقع — يرجى مراسلتنا عبر واتساب.' },
+    cancelBooking: { en: 'Cancel Booking', ar: 'إلغاء الحجز' },
+    cancelling: { en: 'Cancelling…', ar: 'جارٍ الإلغاء…' },
+    cancelled: { en: 'Your booking has been cancelled.', ar: 'تم إلغاء حجزك.' },
+    changeSession: { en: 'Change to a different session', ar: 'التغيير إلى حصة أخرى' },
+    newSession: { en: 'New session', ar: 'الحصة الجديدة' },
+    saveChange: { en: 'Save Change', ar: 'حفظ التغيير' },
+    saving: { en: 'Saving…', ar: 'جارٍ الحفظ…' },
+    changed: { en: 'Your booking has been moved to the new session.', ar: 'تم نقل حجزك إلى الحصة الجديدة.' },
+    newSessionFull: { en: 'That session is fully booked — pick another.', ar: 'هذه الحصة محجوزة بالكامل — اختاري حصة أخرى.' }
+  };
+
+  function t(key) {
+    var entry = STR[key];
+    return entry ? (entry[currentLang] || entry.en) : key;
+  }
+
+  var CLASS_LABELS = {
+    'Reformer Flow': { en: 'Reformer Flow', ar: 'ريفورمر فلو' },
+    'Beginners': { en: 'Beginners', ar: 'مبتدئات' },
+    'Reformer Sculpt': { en: 'Reformer Sculpt', ar: 'ريفورمر سكالبت' },
+    'Mixed Level': { en: 'Mixed Level', ar: 'مستوى مختلط' }
+  };
+  var INSTRUCTOR_LABELS = {
+    'Lina Saeed': { en: 'Lina Saeed', ar: 'لينا سعيد' },
+    'Mira Haddad': { en: 'Mira Haddad', ar: 'ميرا حداد' },
+    'Rana Khalil': { en: 'Rana Khalil', ar: 'رنا خليل' }
+  };
+  var DAY_LABELS = [
+    { en: 'Sunday', ar: 'الأحد' },
+    { en: 'Monday', ar: 'الإثنين' },
+    { en: 'Tuesday', ar: 'الثلاثاء' },
+    { en: 'Wednesday', ar: 'الأربعاء' },
+    { en: 'Thursday', ar: 'الخميس' },
+    { en: 'Friday', ar: 'الجمعة' },
+    { en: 'Saturday', ar: 'السبت' }
+  ];
+
+  function classLabel(key) { return (CLASS_LABELS[key] || { en: key, ar: key })[currentLang]; }
+  function instructorLabel(key) { return (INSTRUCTOR_LABELS[key] || { en: key, ar: key })[currentLang]; }
+  function dayLabel(dayIndex) { return DAY_LABELS[dayIndex][currentLang]; }
+
+  function pad2(n) { return n < 10 ? '0' + n : String(n); }
+
+  function formatDate(d) {
+    return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+  }
+
+  // Studio Noor is in Asia/Dubai, a fixed UTC+4 offset with no DST.
+  function classStartMs(date, time) {
+    return new Date(date + 'T' + time + ':00+04:00').getTime();
+  }
+
+  // The next real calendar date for a given weekday (0=Sun..6=Sat), skipping
+  // to next week if that session's time has already passed today.
+  function nextDateForSession(dayIndex, time) {
+    var now = new Date();
+    var diff = (dayIndex - now.getDay() + 7) % 7;
+    var candidate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + diff);
+    var dateStr = formatDate(candidate);
+    if (classStartMs(dateStr, time) <= Date.now()) {
+      candidate.setDate(candidate.getDate() + 7);
+      dateStr = formatDate(candidate);
+    }
+    return dateStr;
+  }
+
+  function formatDisplayDate(dateStr) {
+    var parts = dateStr.split('-');
+    var d = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+    return d.toLocaleDateString(currentLang === 'ar' ? 'ar-AE' : 'en-GB', { day: 'numeric', month: 'short' });
+  }
+
+  async function apiFetch(path, options) {
+    var res = await fetch(API_BASE_URL + path, options);
+    var data = null;
+    try { data = await res.json(); } catch (e) {}
+    if (!res.ok) {
+      var message = (data && data.error) || t('genericError');
+      var err = new Error(message);
+      err.status = res.status;
+      err.data = data;
+      throw err;
+    }
+    return data;
+  }
+
+  function messageBox(kind, text) {
+    var div = document.createElement('div');
+    div.className = 'booking-msg ' + kind;
+    div.textContent = text;
+    return div;
+  }
+
+  // ---- Schedule slot booking ----
+
+  function renderSlotGrid(grid, sessionRow, date, time, bookedSlots) {
+    grid.innerHTML = '';
+    var bookedSet = {};
+    bookedSlots.forEach(function (n) { bookedSet[n] = true; });
+    for (var i = 1; i <= 6; i++) {
+      var li = document.createElement('li');
+      var isBooked = !!bookedSet[i];
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'slot-pill ' + (isBooked ? 'booked' : 'available');
+      btn.textContent = isBooked ? t('booked') : (t('slotLabel') + ' ' + i);
+      btn.disabled = isBooked;
+      if (!isBooked) {
+        btn.addEventListener('click', function (slotNum) {
+          return function () { openBookingForm(sessionRow, grid, date, time, slotNum); };
+        }(i));
+      }
+      li.appendChild(btn);
+      grid.appendChild(li);
+    }
+  }
+
+  async function loadSlotGrid(sessionRow, grid) {
+    var dayIndex = parseInt(sessionRow.getAttribute('data-day'), 10);
+    var time = sessionRow.getAttribute('data-time');
+    var date = nextDateForSession(dayIndex, time);
+    grid.setAttribute('data-resolved-date', date);
+
+    var status = document.createElement('li');
+    status.className = 'slot-status';
+    status.textContent = t('checking');
+    grid.innerHTML = '';
+    grid.appendChild(status);
+
+    try {
+      var data = await apiFetch('/api/availability?date=' + encodeURIComponent(date) + '&time=' + encodeURIComponent(time));
+      renderSlotGrid(grid, sessionRow, date, time, data.bookedSlots || []);
+    } catch (err) {
+      grid.innerHTML = '';
+      var errLi = document.createElement('li');
+      errLi.className = 'slot-status';
+      errLi.textContent = t('unavailableService');
+      grid.appendChild(errLi);
+    }
+  }
+
+  function closeBookingForm(grid) {
+    var existing = grid.parentElement.querySelector('.booking-panel, .booking-msg');
+    if (existing) existing.remove();
+  }
+
+  function openBookingForm(sessionRow, grid, date, time, slotNum) {
+    closeBookingForm(grid);
+
+    var panel = document.createElement('div');
+    panel.className = 'booking-panel';
+
+    var nameInput = document.createElement('input');
+    nameInput.type = 'text';
+    nameInput.placeholder = t('namePlaceholder');
+    nameInput.autocomplete = 'name';
+
+    var phoneInput = document.createElement('input');
+    phoneInput.type = 'tel';
+    phoneInput.placeholder = t('phonePlaceholder');
+    phoneInput.autocomplete = 'tel';
+
+    var actions = document.createElement('div');
+    actions.className = 'booking-actions';
+
+    var confirmBtn = document.createElement('button');
+    confirmBtn.type = 'button';
+    confirmBtn.className = 'btn btn-primary';
+    confirmBtn.textContent = t('confirmBooking');
+
+    var cancelBtn = document.createElement('button');
+    cancelBtn.type = 'button';
+    cancelBtn.className = 'btn btn-secondary';
+    cancelBtn.textContent = t('cancelForm');
+    cancelBtn.addEventListener('click', function () { panel.remove(); });
+
+    confirmBtn.addEventListener('click', async function () {
+      var name = nameInput.value.trim();
+      var phone = phoneInput.value.trim();
+      if (!name || !phone) {
+        closeBookingForm(grid);
+        grid.parentElement.insertBefore(messageBox('error', t('fillNamePhone')), grid.nextSibling);
+        return;
+      }
+      confirmBtn.disabled = true;
+      confirmBtn.textContent = t('booking');
+      try {
+        var classKey = sessionRow.getAttribute('data-class-key');
+        var instructorKey = sessionRow.getAttribute('data-instructor-key');
+        var result = await apiFetch('/api/book', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            date: date,
+            time: time,
+            className: classKey,
+            instructor: instructorKey,
+            name: name,
+            phone: phone
+          })
+        });
+        panel.remove();
+        var successBox = messageBox('success', '');
+        successBox.appendChild(document.createTextNode(t('bookedSuccess') + ' '));
+        var idEl = document.createElement('code');
+        idEl.textContent = result.bookingId;
+        var codeEl = document.createElement('code');
+        codeEl.textContent = result.confirmationCode;
+        successBox.appendChild(document.createTextNode(t('bookingId') + ': '));
+        successBox.appendChild(idEl);
+        successBox.appendChild(document.createTextNode(' · ' + t('code') + ': '));
+        successBox.appendChild(codeEl);
+        grid.parentElement.insertBefore(successBox, grid.nextSibling);
+        loadSlotGrid(sessionRow, grid);
+      } catch (err) {
+        confirmBtn.disabled = false;
+        confirmBtn.textContent = t('confirmBooking');
+        var text = err.status === 409 ? t('sessionFull') : t('genericError');
+        closeBookingForm(grid);
+        grid.parentElement.insertBefore(messageBox('error', text), grid.nextSibling);
+        if (err.status === 409) loadSlotGrid(sessionRow, grid);
+      }
+    });
+
+    actions.appendChild(confirmBtn);
+    actions.appendChild(cancelBtn);
+    panel.appendChild(nameInput);
+    panel.appendChild(phoneInput);
+    panel.appendChild(actions);
+    grid.parentElement.insertBefore(panel, grid.nextSibling);
+    nameInput.focus();
+  }
+
+  document.addEventListener('click', function (e) {
+    var toggle = e.target.closest('.slot-toggle');
+    if (!toggle) return;
+    var row = toggle.closest('.session-row');
+    var grid = row.nextElementSibling;
+    if (!grid || !grid.classList.contains('slot-grid')) return;
+    var isOpen = grid.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    if (isOpen) loadSlotGrid(row, grid);
+    else closeBookingForm(grid);
+  });
+
+  // ---- Manage / cancel / modify booking ----
+
+  function buildSessionOptions(excludeRow) {
+    var options = [];
+    document.querySelectorAll('#schedule .session-row[data-day]').forEach(function (row) {
+      if (row === excludeRow) return;
+      var dayIndex = parseInt(row.getAttribute('data-day'), 10);
+      var time = row.getAttribute('data-time');
+      var classKey = row.getAttribute('data-class-key');
+      var instructorKey = row.getAttribute('data-instructor-key');
+      var date = nextDateForSession(dayIndex, time);
+      options.push({
+        date: date,
+        time: time,
+        classKey: classKey,
+        instructorKey: instructorKey,
+        label: dayLabel(dayIndex) + ' ' + formatDisplayDate(date) + ' · ' + time + ' · ' + classLabel(classKey) + ' (' + instructorLabel(instructorKey) + ')'
+      });
+    });
+    options.sort(function (a, b) { return (a.date + a.time) < (b.date + b.time) ? -1 : 1; });
+    return options;
+  }
+
+  function renderManageResult(container, booking, hoursUntilClass, canChange) {
+    container.innerHTML = '';
+
+    var card = document.createElement('div');
+    card.className = 'booking-panel';
+
+    var title = document.createElement('strong');
+    title.textContent = t('yourBooking') + ': ' + classLabel(booking.class_name) + ' · ' + booking.class_date + ' ' + booking.session_time;
+    card.appendChild(title);
+
+    var hoursLine = document.createElement('div');
+    hoursLine.textContent = Math.max(0, Math.round(hoursUntilClass)) + ' ' + t('hoursLeft');
+    card.appendChild(hoursLine);
+
+    if (!canChange) {
+      card.appendChild(messageBox('error', t('tooLate')));
+      container.appendChild(card);
+      return;
+    }
+
+    card.appendChild(messageBox('success', t('canChange')));
+
+    var actions = document.createElement('div');
+    actions.className = 'booking-actions';
+
+    var cancelBtn = document.createElement('button');
+    cancelBtn.type = 'button';
+    cancelBtn.className = 'btn btn-secondary';
+    cancelBtn.textContent = t('cancelBooking');
+    cancelBtn.addEventListener('click', async function () {
+      cancelBtn.disabled = true;
+      cancelBtn.textContent = t('cancelling');
+      try {
+        await apiFetch('/api/cancel', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ bookingId: booking.id, confirmationCode: booking.confirmation_code })
+        });
+        container.innerHTML = '';
+        container.appendChild(messageBox('success', t('cancelled')));
+      } catch (err) {
+        cancelBtn.disabled = false;
+        cancelBtn.textContent = t('cancelBooking');
+        container.appendChild(messageBox('error', err.message || t('genericError')));
+      }
+    });
+
+    var changeBtn = document.createElement('button');
+    changeBtn.type = 'button';
+    changeBtn.className = 'btn btn-primary';
+    changeBtn.textContent = t('changeSession');
+
+    actions.appendChild(cancelBtn);
+    actions.appendChild(changeBtn);
+    card.appendChild(actions);
+
+    var changePanel = document.createElement('div');
+    changePanel.style.display = 'none';
+    changePanel.style.marginTop = '10px';
+
+    var label = document.createElement('label');
+    label.textContent = t('newSession');
+    label.style.display = 'block';
+    label.style.fontWeight = '600';
+    label.style.fontSize = '0.85rem';
+    label.style.marginBottom = '6px';
+
+    var select = document.createElement('select');
+    buildSessionOptions(null).forEach(function (opt) {
+      var optionEl = document.createElement('option');
+      optionEl.value = JSON.stringify({ date: opt.date, time: opt.time, classKey: opt.classKey, instructorKey: opt.instructorKey });
+      optionEl.textContent = opt.label;
+      select.appendChild(optionEl);
+    });
+
+    var saveBtn = document.createElement('button');
+    saveBtn.type = 'button';
+    saveBtn.className = 'btn btn-primary';
+    saveBtn.style.marginTop = '10px';
+    saveBtn.textContent = t('saveChange');
+    saveBtn.addEventListener('click', async function () {
+      var chosen = JSON.parse(select.value);
+      saveBtn.disabled = true;
+      saveBtn.textContent = t('saving');
+      try {
+        await apiFetch('/api/modify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            bookingId: booking.id,
+            confirmationCode: booking.confirmation_code,
+            newDate: chosen.date,
+            newTime: chosen.time,
+            className: chosen.classKey,
+            instructor: chosen.instructorKey
+          })
+        });
+        container.innerHTML = '';
+        container.appendChild(messageBox('success', t('changed')));
+      } catch (err) {
+        saveBtn.disabled = false;
+        saveBtn.textContent = t('saveChange');
+        var text = err.status === 409 ? t('newSessionFull') : (err.message || t('genericError'));
+        container.appendChild(messageBox('error', text));
+      }
+    });
+
+    changeBtn.addEventListener('click', function () {
+      changePanel.style.display = changePanel.style.display === 'none' ? 'block' : 'none';
+    });
+
+    changePanel.appendChild(label);
+    changePanel.appendChild(select);
+    changePanel.appendChild(saveBtn);
+    card.appendChild(changePanel);
+
+    container.appendChild(card);
+  }
+
+  var findBookingForm = document.getElementById('find-booking-form');
+  if (findBookingForm) {
+    findBookingForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      var id = document.getElementById('mb-id').value.trim();
+      var code = document.getElementById('mb-code').value.trim();
+      var result = document.getElementById('manage-result');
+      result.innerHTML = '';
+      if (!id || !code) {
+        result.appendChild(messageBox('error', t('fillIdCode')));
+        return;
+      }
+      result.appendChild(messageBox('success', t('searching')));
+      try {
+        var data = await apiFetch('/api/booking?id=' + encodeURIComponent(id) + '&code=' + encodeURIComponent(code));
+        renderManageResult(result, data.booking, data.hoursUntilClass, data.canChange);
+      } catch (err) {
+        result.innerHTML = '';
+        var text = err.status === 404 ? t('notFound') : t('genericError');
+        result.appendChild(messageBox('error', text));
       }
     });
   }
 
+  // ---- Language toggle ----
+
   function setLang(lang) {
+    currentLang = lang;
     var isAr = lang === 'ar';
     document.documentElement.lang = lang;
     document.documentElement.dir = isAr ? 'rtl' : 'ltr';
@@ -1647,20 +2245,12 @@
       var text = el.getAttribute(isAr ? 'data-ar' : 'data-en');
       if (text !== null) el.innerHTML = text;
     });
-    renderSlots(lang);
+    document.querySelectorAll('.slot-grid.open').forEach(function (grid) {
+      var row = grid.previousElementSibling;
+      if (row && row.classList.contains('session-row')) loadSlotGrid(row, grid);
+    });
     try { localStorage.setItem('studio-noor-lang', lang); } catch (e) {}
   }
-
-  document.addEventListener('click', function (e) {
-    var btn = e.target.closest('.slot-toggle');
-    if (!btn) return;
-    var grid = btn.closest('.session-row').nextElementSibling;
-    if (!grid || !grid.classList.contains('slot-grid')) return;
-    var isOpen = grid.classList.toggle('open');
-    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  });
-
-  renderSlots('en');
 
   (function () {
     var saved = null;

@@ -1,0 +1,10 @@
+name = "studio-noor-booking"
+main = "src/index.js"
+compatibility_date = "2024-09-23"
+
+# After running `wrangler d1 create studio-noor-bookings`, paste the
+# database_id it prints below before deploying.
+[[d1_databases]]
+binding = "DB"
+database_name = "studio-noor-bookings"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
