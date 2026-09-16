@@ -484,6 +484,47 @@
     font-size: 0.9rem;
   }
 
+  /* ---------- Post-Class Drinks ---------- */
+  .drinks-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .drink-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 26px 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .drink-card .drink-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--sand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+
+  .drink-card h3 {
+    font-size: 1.02rem;
+    color: var(--sage-dark);
+    margin-bottom: 6px;
+  }
+
+  .drink-card p {
+    color: var(--charcoal-soft);
+    font-size: 0.92rem;
+    margin: 0;
+  }
+
   /* ---------- Location / Contact ---------- */
   .contact-grid {
     display: grid;
@@ -576,6 +617,7 @@
     .pricing-grid { grid-template-columns: repeat(3, 1fr); }
     .instructor-grid { grid-template-columns: repeat(3, 1fr); }
     .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+    .drinks-grid { grid-template-columns: repeat(2, 1fr); }
     .contact-grid { grid-template-columns: 1fr 1fr; }
     section { padding: 96px 0; }
   }
@@ -851,6 +893,75 @@
           data-ar="نص تجريبي: تقدم أسلوبًا حيويًا يركز على النحت في كل حصة ريفورمر تقدمها.">
           Placeholder bio: brings an energetic, sculpt-focused style to every reformer class she teaches.
         </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="hydrate">
+  <div class="container">
+    <p class="eyebrow i18n" data-en="Recovery" data-ar="الاستشفاء">Recovery</p>
+    <h2 class="i18n" data-en="After Your Class" data-ar="بعد حصتك">After Your Class</h2>
+    <p class="section-intro i18n"
+      data-en="What to drink once you're off the reformer, from the simple default to the situational upgrades."
+      data-ar="ماذا تشربين بعد نزولك من الريفورمر، من الخيار الافتراضي البسيط إلى الخيارات الإضافية حسب الحاجة.">
+      What to drink once you're off the reformer, from the simple default to the situational upgrades.
+    </p>
+    <div class="drinks-grid">
+      <div class="drink-card">
+        <div class="drink-icon" aria-hidden="true">💧</div>
+        <div>
+          <h3 class="i18n" data-en="Water — the default" data-ar="الماء — الخيار الافتراضي">Water — the default</h3>
+          <p class="i18n"
+            data-en="Around 400–500 ml over the hour after class."
+            data-ar="حوالي 400–500 مل خلال الساعة التي تلي الحصة.">
+            Around 400–500 ml over the hour after class.
+          </p>
+        </div>
+      </div>
+      <div class="drink-card">
+        <div class="drink-icon" aria-hidden="true">🍋</div>
+        <div>
+          <h3 class="i18n" data-en="Water with salt and lemon, or an electrolyte tablet" data-ar="ماء مع ملح وليمون، أو قرص إلكتروليت">Water with salt and lemon, or an electrolyte tablet</h3>
+          <p class="i18n"
+            data-en="Worth it in Abu Dhabi summer, or if you sweat heavily or have a long walk to the car park."
+            data-ar="يستحق العناء في صيف أبوظبي، أو إذا كنتِ تتعرقين بغزارة أو أمامك مشي طويل إلى موقف السيارات.">
+            Worth it in Abu Dhabi summer, or if you sweat heavily or have a long walk to the car park.
+          </p>
+        </div>
+      </div>
+      <div class="drink-card">
+        <div class="drink-icon" aria-hidden="true">🥛</div>
+        <div>
+          <h3 class="i18n" data-en="Milk or a protein shake" data-ar="الحليب أو مخفوق البروتين">Milk or a protein shake</h3>
+          <p class="i18n"
+            data-en="Useful if the session was strength-focused and your next meal is more than a couple of hours away. Roughly 20–25 g protein."
+            data-ar="مفيد إذا كانت الحصة تركّز على القوة وموعد وجبتك التالية بعد أكثر من ساعتين. بمقدار 20–25 غرام بروتين تقريبًا.">
+            Useful if the session was strength-focused and your next meal is more than a couple of hours away. Roughly 20–25 g protein.
+          </p>
+        </div>
+      </div>
+      <div class="drink-card">
+        <div class="drink-icon" aria-hidden="true">🍶</div>
+        <div>
+          <h3 class="i18n" data-en="Laban or ayran" data-ar="اللبن أو العيران">Laban or ayran</h3>
+          <p class="i18n"
+            data-en="Protein and salt together, and easy to find locally."
+            data-ar="يجمع بين البروتين والملح، ومتوفر بسهولة محليًا.">
+            Protein and salt together, and easy to find locally.
+          </p>
+        </div>
+      </div>
+      <div class="drink-card">
+        <div class="drink-icon" aria-hidden="true">☕</div>
+        <div>
+          <h3 class="i18n" data-en="Green tea or black coffee" data-ar="الشاي الأخضر أو القهوة السوداء">Green tea or black coffee</h3>
+          <p class="i18n"
+            data-en="Fine, just count them alongside your water rather than instead of it."
+            data-ar="لا بأس بهما، فقط احتسبيهما إلى جانب الماء وليس بديلاً عنه.">
+            Fine, just count them alongside your water rather than instead of it.
+          </p>
+        </div>
       </div>
     </div>
   </div>
