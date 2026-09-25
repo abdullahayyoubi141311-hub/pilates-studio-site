@@ -1810,6 +1810,9 @@
     fillNamePhone: { en: 'Please enter your name and WhatsApp number.', ar: 'يرجى إدخال اسمك ورقم واتساب.' },
     booking: { en: 'Booking…', ar: 'جارٍ الحجز…' },
     bookedSuccess: { en: 'Booked! Save your booking ID and confirmation code to cancel or change it later:', ar: 'تم الحجز! احتفظي برقم الحجز ورمز التأكيد لإلغائه أو تعديله لاحقًا:' },
+    reservedUnder: { en: 'This slot is now reserved under', ar: 'تم حجز هذا المقعد باسم' },
+    available: { en: 'available', ar: 'متاح' },
+    fullyBooked: { en: 'Fully booked', ar: 'مكتمل العدد' },
     bookingId: { en: 'Booking ID', ar: 'رقم الحجز' },
     code: { en: 'Code', ar: 'الرمز' },
     sessionFull: { en: 'Sorry, this session just filled up.', ar: 'عذرًا، اكتملت هذه الحصة للتو.' },
@@ -1914,6 +1917,64 @@
     return div;
   }
 
+  // ---- Live "N available" labels on every session, before it's opened ----
+
+  var availabilityMap = {}; // '<date>|<time>' -> number of booked slots
+  var availabilityLoaded = false; // true once we've successfully fetched at least once
+
+  function availabilityKey(date, time) { return date + '|' + time; }
+
+  function slotLabelText(bookedCount) {
+    var count = typeof bookedCount === 'number' ? bookedCount : 0;
+    if (count >= 6) return t('fullyBooked');
+    return (6 - count) + ' ' + t('available');
+  }
+
+  function applyAvailabilityLabels() {
+    document.querySelectorAll('#schedule .session-row[data-day]').forEach(function (row) {
+      var dayIndex = parseInt(row.getAttribute('data-day'), 10);
+      var time = row.getAttribute('data-time');
+      var date = nextDateForSession(dayIndex, time);
+      var key = availabilityKey(date, time);
+      // A session missing from the map genuinely has 0 bookings, but only
+      // once we know the fetch actually succeeded — otherwise leave the
+      // static "6 slots" fallback text alone.
+      if (!(key in availabilityMap) && !availabilityLoaded) return;
+      var toggle = row.querySelector('.slot-toggle');
+      var labelSpan = toggle && toggle.querySelector('span:first-child');
+      if (labelSpan) labelSpan.textContent = slotLabelText(availabilityMap[key]);
+    });
+  }
+
+  async function refreshAvailabilityMap() {
+    var rows = document.querySelectorAll('#schedule .session-row[data-day]');
+    if (!rows.length) return;
+    var dates = [];
+    rows.forEach(function (row) {
+      var dayIndex = parseInt(row.getAttribute('data-day'), 10);
+      var time = row.getAttribute('data-time');
+      dates.push(nextDateForSession(dayIndex, time));
+    });
+    dates.sort();
+    try {
+      var data = await apiFetch(
+        '/api/availability-range?start=' + encodeURIComponent(dates[0]) +
+        '&end=' + encodeURIComponent(dates[dates.length - 1])
+      );
+      var counts = {};
+      (data.bookings || []).forEach(function (b) {
+        var key = availabilityKey(b.class_date, b.session_time);
+        counts[key] = (counts[key] || 0) + 1;
+      });
+      availabilityMap = counts;
+      availabilityLoaded = true;
+      applyAvailabilityLabels();
+    } catch (err) {
+      // Leave each session's default "6 slots" label in place if the API
+      // is unreachable — no need to show 19 error messages at once.
+    }
+  }
+
   // ---- Schedule slot booking ----
 
   function renderSlotGrid(grid, sessionRow, date, time, bookedSlots) {
@@ -1953,6 +2014,9 @@
     try {
       var data = await apiFetch('/api/availability?date=' + encodeURIComponent(date) + '&time=' + encodeURIComponent(time));
       renderSlotGrid(grid, sessionRow, date, time, data.bookedSlots || []);
+      availabilityMap[availabilityKey(date, time)] = (data.bookedSlots || []).length;
+      availabilityLoaded = true;
+      applyAvailabilityLabels();
     } catch (err) {
       grid.innerHTML = '';
       var errLi = document.createElement('li');
@@ -2024,6 +2088,10 @@
         });
         panel.remove();
         var successBox = messageBox('success', '');
+        var reservedLine = document.createElement('strong');
+        reservedLine.textContent = t('reservedUnder') + ' ' + name + '.';
+        successBox.appendChild(reservedLine);
+        successBox.appendChild(document.createElement('br'));
         successBox.appendChild(document.createTextNode(t('bookedSuccess') + ' '));
         var idEl = document.createElement('code');
         idEl.textContent = result.bookingId;
@@ -2249,6 +2317,7 @@
       var row = grid.previousElementSibling;
       if (row && row.classList.contains('session-row')) loadSlotGrid(row, grid);
     });
+    applyAvailabilityLabels();
     try { localStorage.setItem('studio-noor-lang', lang); } catch (e) {}
   }
 
@@ -2257,6 +2326,8 @@
     try { saved = localStorage.getItem('studio-noor-lang'); } catch (e) {}
     if (saved === 'ar') setLang('ar');
   })();
+
+  refreshAvailabilityMap();
 </script>
 
 </body>

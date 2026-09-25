@@ -126,6 +126,22 @@ async function handleAvailability(url, env) {
   });
 }
 
+// Lets the site show real remaining-slot counts on every session at once
+// (instead of only after a visitor opens it) with one query instead of 19.
+async function handleAvailabilityRange(url, env) {
+  const start = url.searchParams.get('start');
+  const end = url.searchParams.get('end');
+  if (!isValidDate(start) || !isValidDate(end)) {
+    return json({ error: 'Valid start and end dates (YYYY-MM-DD) are required' }, 400);
+  }
+  const { results } = await env.DB.prepare(
+    'SELECT class_date, session_time, slot_number FROM bookings WHERE class_date BETWEEN ? AND ? ORDER BY class_date, session_time'
+  )
+    .bind(start, end)
+    .all();
+  return json({ start, end, bookings: results });
+}
+
 async function handleBook(request, env) {
   const body = await request.json().catch(function () { return null; });
   if (!body) return json({ error: 'Invalid JSON body' }, 400);
@@ -254,6 +270,9 @@ export default {
       }
       if (url.pathname === '/api/availability' && request.method === 'GET') {
         return await handleAvailability(url, env);
+      }
+      if (url.pathname === '/api/availability-range' && request.method === 'GET') {
+        return await handleAvailabilityRange(url, env);
       }
       if (url.pathname === '/api/book' && request.method === 'POST') {
         return await handleBook(request, env);
