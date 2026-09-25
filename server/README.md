@@ -15,6 +15,7 @@ every visitor's browser shares — a plain HTML/CSS/JS page can't enforce
 | Method | Path              | Purpose                                   |
 | ------ | ----------------- | ------------------------------------------ |
 | GET    | `/api/availability?date=YYYY-MM-DD&time=HH:MM` | Which of the 6 slots are already booked |
+| GET    | `/api/availability-range?start=YYYY-MM-DD&end=YYYY-MM-DD` | All bookings across a date range, so the site can show a live remaining-slot count on every session at once |
 | POST   | `/api/book`       | Book the first free slot in a session      |
 | GET    | `/api/booking?id=&code=` | Look up a booking (needs its id + confirmation code) |
 | POST   | `/api/cancel`     | Cancel a booking (>= 24h before class only) |
